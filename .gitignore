@@ -1,0 +1,18 @@
+﻿# Dependencies
+node_modules/
+
+# Environment files - never commit real secrets
+.env
+
+# Build output
+dist/
+build/
+
+# OS & editor noise
+.DS_Store
+Thumbs.db
+*.log
+npm-debug.log*
+
+# Bob internal
+.bob/
