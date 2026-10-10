@@ -20,8 +20,8 @@ app.use(express.json());
 // ── Health check (used by UptimeRobot to keep Render awake) ──────────────────
 app.get('/health', (_req, res) => res.json({ status: 'ok', ts: Date.now() }));
 
-// ── Routes ────────────────────────────────────────────────────────────────────
-app.use('/api/seed',       require('./routes/seed.routes'));   // TEMP — remove after seeding
+// ── Seed route — open CORS so it can be called from any tab (TEMP) ────────────
+app.use('/api/seed', require('cors')(), require('./routes/seed.routes'));
 app.use('/api/auth',       require('./routes/auth.routes'));
 app.use('/api/meal-logs',  require('./routes/mealLog.routes'));
 app.use('/api/surplus',    require('./routes/surplus.routes'));
