@@ -21,6 +21,7 @@ app.use(express.json());
 app.get('/health', (_req, res) => res.json({ status: 'ok', ts: Date.now() }));
 
 // ── Routes ────────────────────────────────────────────────────────────────────
+app.use('/api/seed',       require('./routes/seed.routes'));   // TEMP — remove after seeding
 app.use('/api/auth',       require('./routes/auth.routes'));
 app.use('/api/meal-logs',  require('./routes/mealLog.routes'));
 app.use('/api/surplus',    require('./routes/surplus.routes'));
