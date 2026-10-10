@@ -38,6 +38,9 @@ exports.createLog = async (req, res, next) => {
 
     const cafeteriaId = req.user.cafeteriaId;
     if (!cafeteriaId) return res.status(400).json({ error: 'No cafeteria associated with your account' });
+    if (soldQty !== undefined && preparedQty !== undefined && Number(soldQty) > Number(preparedQty)) {
+      return res.status(400).json({ error: 'Sold quantity cannot exceed prepared quantity' });
+    }
 
     const log = await MealLog.create({
       cafeteriaId,

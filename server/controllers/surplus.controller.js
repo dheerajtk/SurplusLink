@@ -25,6 +25,7 @@ exports.createPost = async (req, res, next) => {
     const { items, preparedTime, expiryTime, mealLogId } = req.body;
 
     if (!items?.length) return res.status(400).json({ error: 'items array is required' });
+    if (new Date(expiryTime) <= new Date()) return res.status(400).json({ error: 'Expiry time must be in the future' });
 
     const post = await SurplusPost.create({
       cafeteriaId: req.user.cafeteriaId,

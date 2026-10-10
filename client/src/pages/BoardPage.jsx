@@ -33,6 +33,13 @@ export default function BoardPage() {
 
   return (
     <div>
+      {!user && (
+        <div className="alert alert-info" style={{ marginBottom: 20 }}>
+          <strong>Welcome to SurplusLink.</strong> Cafeterias post their safe leftover food here.
+          Charities, shelters, and community groups can claim it for free.
+          &nbsp;<a href="/register">Register as a pickup partner</a> to start claiming.
+        </div>
+      )}
       <div className="page-header">
         <h1>Surplus Pickup Board</h1>
         <p>Available food from nearby cafeterias. Claim to pick up.</p>
